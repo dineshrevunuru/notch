@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Under the hardened runtime (required for notarization), calendar access must be declared here. -->
+	<key>com.apple.security.personal-information.calendars</key>
+	<true/>
+	<!-- Focus Guard asks Chrome and Safari for the active tab's address. -->
+	<key>com.apple.security.automation.apple-events</key>
+	<true/>
+</dict>
+</plist>

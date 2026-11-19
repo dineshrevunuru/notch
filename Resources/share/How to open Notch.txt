@@ -1,0 +1,30 @@
+Notch — your notch, as a planner
+
+INSTALL
+1. Double-click the Notch zip file. Notch appears next to it.
+2. Drag Notch into your Applications folder.
+3. Open Notch from Applications.
+
+THE FIRST TIME IT OPENS
+macOS will say it can't check Notch for malicious software. That's because this
+copy isn't signed with a paid Apple developer certificate yet. To open it anyway:
+  1. Click Done (or Cancel) on that message.
+  2. Open System Settings > Privacy & Security.
+  3. Scroll down to Security, find "Notch was blocked to protect your Mac",
+     and click "Open Anyway".
+  4. Click Open Anyway again, and enter your Mac password if asked.
+You only do this once.
+
+Then macOS asks if Notch may see your calendar. Allow it to see your meetings
+in the notch. Everything stays on your Mac.
+
+USING IT
+- Rest your pointer on the notch at the top of your screen to open it.
+- Beside the camera: what's up next (left) and what's happening now (right).
+- "All tasks" or "Plan your day" opens the full window: board, planner, lists.
+- Start a Pomodoro focus round with the Focus button.
+- Right-click empty space in the open notch for Focus Guard, Open at Login, and Quit.
+
+NEEDS
+macOS 14 or later. Best on a MacBook with a notch; on other Macs it draws a small
+stand-in at the top of the screen.
