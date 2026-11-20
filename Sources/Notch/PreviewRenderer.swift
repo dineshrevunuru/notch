@@ -319,7 +319,9 @@ enum PreviewRenderer {
         window.appearance = NSAppearance(named: .aqua)
         controller.view.layoutSubtreeIfNeeded()
         RunLoop.current.run(until: Date().addingTimeInterval(0.6))
-        try write(view: controller.view, to: url)
+        // The window's own background isn't part of the view, so the content area would come out
+        // see-through (and dark on GitHub's dark theme). Flatten onto white, as the window shows it.
+        try write(view: controller.view, to: url, background: .white)
     }
 
     private static func snapshot(_ view: some View, size: CGSize, to url: URL) throws {
@@ -332,9 +334,21 @@ enum PreviewRenderer {
         try write(view: host, to: url)
     }
 
-    private static func write(view: NSView, to url: URL) throws {
-        guard let rep = view.bitmapImageRepForCachingDisplay(in: view.bounds) else { throw CocoaError(.fileWriteUnknown) }
+    private static func write(view: NSView, to url: URL, background: NSColor? = nil) throws {
+        guard var rep = view.bitmapImageRepForCachingDisplay(in: view.bounds) else { throw CocoaError(.fileWriteUnknown) }
         view.cacheDisplay(in: view.bounds, to: rep)
+        if let background, let image = rep.cgImage,
+           let flat = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: rep.pixelsWide, pixelsHigh: rep.pixelsHigh,
+                                       bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true, isPlanar: false,
+                                       colorSpaceName: .deviceRGB, bytesPerRow: 0, bitsPerPixel: 0),
+           let context = NSGraphicsContext(bitmapImageRep: flat) {
+            let bounds = CGRect(x: 0, y: 0, width: flat.pixelsWide, height: flat.pixelsHigh)
+            context.cgContext.setFillColor(background.cgColor)
+            context.cgContext.fill(bounds)
+            context.cgContext.draw(image, in: bounds)
+            flat.size = rep.size
+            rep = flat
+        }
         guard let png = rep.representation(using: .png, properties: [:]) else { throw CocoaError(.fileWriteUnknown) }
         try png.write(to: url)
     }

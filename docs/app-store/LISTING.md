@@ -1,7 +1,7 @@
 # Mac App Store listing — draft for approval
 
-Decided (2026-11-19): the name, the price (Free) and the version (1.0.0). The copy below is still a
-draft until Dinesh approves it. Character limits are App Store Connect's.
+Approved (2026-11-19): the name, the price (Free), the version (1.0.0) and the copy below, as
+drafted. Character limits are App Store Connect's.
 
 ## Name (30 max): **Notch Planner: Focus & Tasks** (decided)
 

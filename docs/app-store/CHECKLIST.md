@@ -9,7 +9,7 @@ team **39B92NB2W2**. About 60–90 minutes the first time, plus Apple's review (
 - [x] **Name** on the store: "Notch Planner: Focus & Tasks" (on the Mac it's still "Notch")
 - [x] **Price**: Free
 - [x] **Version**: 1.0.0 (build 5), set in `Resources/Info.plist`
-- [ ] **Listing copy**: read LISTING.md; it's a draft until you approve it
+- [x] **Listing copy**: approved as drafted (LISTING.md)
 - [x] **Push the repo**, so PRIVACY.md is live at the privacy-policy URL App Store Connect asks for
 
 ## 1. Try the sandboxed build on your Mac (10 min)
