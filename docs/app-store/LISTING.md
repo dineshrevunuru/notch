@@ -1,15 +1,16 @@
 # Mac App Store listing — draft for approval
 
-Everything here is a draft until Dinesh approves it. Character limits are App Store Connect's.
+Decided (2026-11-19): the name, the price (Free) and the version (1.0.0). The copy below is still a
+draft until Dinesh approves it. Character limits are App Store Connect's.
 
-## Name (30 max) — pick one
+## Name (30 max): **Notch Planner: Focus & Tasks** (decided)
 
 "Notch" alone isn't on the store, but "Notch: The Modern PDF Editor" is, and about 25 notch utilities
 are (NotchNest, Dynamic Notch Island, Nook X, …), so a name that says what it does stands out more.
 
 | Option | Length | Note |
 |---|---|---|
-| **Notch Planner: Focus & Tasks** (recommended) | 28 | Says the three things it does; "Notch" stays the app's name on the Mac |
+| **Notch Planner: Focus & Tasks** (chosen) | 28 | Says the three things it does; "Notch" stays the app's name on the Mac |
 | NotchDay: Plan, Focus, Tasks | 28 | A brand of its own |
 | Notch Desk: Planner & Focus | 27 | Softer |
 
@@ -67,7 +68,7 @@ No "dynamic island": it's Apple's registered trademark, and Guideline 2.3.7 bars
 | Field | Value |
 |---|---|
 | Category | Productivity (secondary: Utilities) |
-| Price | Free (recommended for launch) — Dinesh to decide |
+| Price | Free |
 | Age rating | 4+ (no objectionable content) |
 | Copyright | © 2026 Dinesh Revunuru |
 | Support URL | https://github.com/dineshrevunuru/notch |

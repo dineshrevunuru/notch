@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased: Mac App Store edition
+## 1.0.0: the Mac App Store edition (not yet submitted)
+
+- **First store release**, as "Notch Planner: Focus & Tasks", free.
 
 - **A sandboxed build for the Mac App Store** (`scripts/build-app.sh --appstore`): universal,
   signed and packaged for Transporter once the certificates exist, with the Xcode/SDK keys App

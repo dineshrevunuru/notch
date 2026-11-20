@@ -1,7 +1,7 @@
 # Notch
 
 A Mac app that lives in the MacBook notch: a glance at what's next and what's happening now,
-a Pomodoro timer, a daily planner, and a Kanban board behind it. Version 0.3.1.
+a Pomodoro timer, a daily planner, and a Kanban board behind it. Version 1.0.0.
 
 - **At a glance, without hovering:** compact signals beside the camera. Left: up next (your next
   meeting or task, with its time). Right: now (the timer, the meeting you're in, or the card in Doing).

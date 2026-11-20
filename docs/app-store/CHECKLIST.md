@@ -6,11 +6,11 @@ team **39B92NB2W2**. About 60–90 minutes the first time, plus Apple's review (
 
 ## 0. Decide (5 min)
 
-- [ ] **Name** on the store: recommended "Notch Planner: Focus & Tasks" (see LISTING.md)
-- [ ] **Price**: Free recommended for launch
-- [ ] **Version**: recommended **1.0.0** for the first store release (the app is 0.3.1 now; a one-line change)
+- [x] **Name** on the store: "Notch Planner: Focus & Tasks" (on the Mac it's still "Notch")
+- [x] **Price**: Free
+- [x] **Version**: 1.0.0 (build 5), set in `Resources/Info.plist`
 - [ ] **Listing copy**: read LISTING.md; it's a draft until you approve it
-- [ ] **Push the repo**, so PRIVACY.md is live at the privacy-policy URL App Store Connect asks for
+- [x] **Push the repo**, so PRIVACY.md is live at the privacy-policy URL App Store Connect asks for
 
 ## 1. Try the sandboxed build on your Mac (10 min)
 
@@ -43,7 +43,7 @@ At developer.apple.com › Certificates, Identifiers & Profiles:
 ## 4. The app record in App Store Connect (20–30 min)
 
 appstoreconnect.apple.com › Apps › **+** › New App:
-- [ ] Platform macOS · Name (from step 0) · Primary language English (U.S.) ·
+- [ ] Platform macOS · Name "Notch Planner: Focus & Tasks" · Primary language English (U.S.) ·
       Bundle ID `com.dineshrevunuru.notch` · SKU, e.g. `NOTCH-MAC-1` · Full access
 - [ ] Fill the version page from LISTING.md: subtitle, promotional text, description, keywords,
       support URL, category Productivity
@@ -51,7 +51,7 @@ appstoreconnect.apple.com › Apps › **+** › New App:
 - [ ] **App Privacy** › Get Started › "No, we do not collect data from this app"
 - [ ] Privacy Policy URL: `https://github.com/dineshrevunuru/notch/blob/main/PRIVACY.md`
 - [ ] Age rating questionnaire: answer None/No throughout → 4+
-- [ ] Pricing and Availability: your price (step 0), all regions or your pick
+- [ ] Pricing and Availability: Free, all regions or your pick
 - [ ] App Review Information: your contact details, and paste "Notes for App Review" from LISTING.md
 
 ## 5. Build and upload (15 min, plus Apple's processing)
