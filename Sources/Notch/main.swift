@@ -1,6 +1,9 @@
 import AppKit
 
 let arguments = CommandLine.arguments
+if arguments.contains("--selftest") {
+    SelfTest.run()
+}
 if let flag = arguments.firstIndex(of: "--render-previews"), flag + 1 < arguments.count {
     PreviewRenderer.run(into: URL(fileURLWithPath: arguments[flag + 1]))
 }

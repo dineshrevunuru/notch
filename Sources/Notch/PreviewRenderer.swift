@@ -9,6 +9,7 @@ enum PreviewRenderer {
     static func run(into directory: URL) -> Never {
         _ = NSApplication.shared
         NSApp.setActivationPolicy(.prohibited)
+        NotchModel.fixedNow = now
 
         do {
             try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
@@ -43,8 +44,14 @@ enum PreviewRenderer {
             )
             print("rendered w3-board.png")
 
-            // Planner, morning: one late task to settle, a meeting, two picks made.
+            // Planner, morning: one late task to settle, a meeting, two picks made. A fresh plan
+            // starts from what's already in Doing today, so moving two cards there picks them.
             let morning = richTasks()
+            for (title, estimate) in [("Ship the case study", 90), ("Send the November invoice", 30)] {
+                guard let id = morning.tasks.first(where: { $0.title == title })?.id else { continue }
+                morning.setEstimate(id, minutes: estimate)
+                morning.move(id, to: .doing, now: minutes(-20))
+            }
             try renderWindow(
                 model: sampleModel(events: laterEvents(), tasks: morning),
                 list: .planner,
@@ -78,7 +85,11 @@ enum PreviewRenderer {
 
     // MARK: Sample data
 
-    private static let now = Date()
+    /// The time every scene is drawn at. App Store renders (`--store`) use 1:30 PM today, so the
+    /// planner has a working afternoon to fill; otherwise it's the moment you run it.
+    private static let now: Date = CommandLine.arguments.contains("--store")
+        ? Calendar.current.date(bySettingHour: 13, minute: 30, second: 0, of: Date())!
+        : Date()
     private static func minutes(_ m: Double) -> Date { now.addingTimeInterval(m * 60) }
     private static let calendar = Calendar.current
 
@@ -286,9 +297,10 @@ enum PreviewRenderer {
             Color.white.opacity(0.18).frame(height: metrics.notchSize.height)
             NotchRootView(model: model, metrics: metrics)
             // The camera housing, painted on top: on the real screen nothing under it is visible,
-            // so the preview hides it too. Slightly lighter than black so its edge shows.
+            // so the preview hides it too. Slightly lighter than black so its edge shows; pure
+            // black with --store, for App Store screenshots, as it looks on a real Mac.
             UnevenRoundedRectangle(bottomLeadingRadius: 9, bottomTrailingRadius: 9)
-                .fill(Color(white: 0.13))
+                .fill(CommandLine.arguments.contains("--store") ? Color.black : Color(white: 0.13))
                 .frame(width: metrics.notchSize.width, height: metrics.notchSize.height)
         }
         .frame(width: size.width, height: size.height)

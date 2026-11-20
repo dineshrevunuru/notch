@@ -3,10 +3,16 @@
 #   scripts/build-app.sh            this Mac's architecture
 #   scripts/build-app.sh --open     build, install into /Applications, relaunch from there
 #   scripts/build-app.sh --share    a universal build (Apple Silicon + Intel), zipped into ./dist with a how-to-open note
+#   scripts/build-app.sh --appstore the sandboxed Mac App Store edition; with your certificates and
+#                                   provisioning profile in place, also a signed .pkg in ./dist to upload
+#                                   (NOTCH_TEST=1 builds it under a test app ID, to try the sandbox safely)
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
 MODE="${1:-}"
+if [[ "$MODE" == "--appstore" ]]; then
+  exec scripts/build-appstore.sh
+fi
 if [[ "$MODE" == "--share" ]]; then
   swift build -c release --product Notch --arch arm64 --arch x86_64
   BIN_DIR="$(swift build -c release --arch arm64 --arch x86_64 --show-bin-path)"

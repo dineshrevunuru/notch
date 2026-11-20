@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- The Mac App Store edition runs in the App Sandbox (App Review Guideline 2.4.5(i)). -->
+	<key>com.apple.security.app-sandbox</key>
+	<true/>
+	<!-- Calendar access, for "what's next" and free time. -->
+	<key>com.apple.security.personal-information.calendars</key>
+	<true/>
+	<!-- No Apple Events: this edition doesn't read browser tabs, so it needs no exception. -->
+</dict>
+</plist>

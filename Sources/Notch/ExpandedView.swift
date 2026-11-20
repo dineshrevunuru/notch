@@ -699,9 +699,9 @@ private struct AppMenu: View {
                 }
             }
             Divider()
-            Section("Counts as a distraction") {
-                ForEach(DistractionKind.allCases, id: \.self) { kind in
-                    Toggle(kind.label, isOn: Binding(
+            Section(Edition.isAppStore ? "Counts as a distraction (apps only)" : "Counts as a distraction") {
+                ForEach(Edition.supportedKinds, id: \.self) { kind in
+                    Toggle(Edition.isAppStore && kind == .video ? "Video apps" : kind.label, isOn: Binding(
                         get: { model.distractionSettings.kinds.contains(kind) },
                         set: { on in
                             if on { model.distractionSettings.kinds.insert(kind) } else { model.distractionSettings.kinds.remove(kind) }

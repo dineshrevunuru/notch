@@ -1,5 +1,19 @@
 # Changelog
 
+## Unreleased: Mac App Store edition
+
+- **A sandboxed build for the Mac App Store** (`scripts/build-app.sh --appstore`): universal,
+  signed and packaged for Transporter once the certificates exist, with the Xcode/SDK keys App
+  Store Connect checks. Focus Guard watches apps only in this edition; tasks move into the
+  app's container on first launch.
+- **`--selftest`** checks storage, calendar access and game detection inside the sandbox, and
+  prints the Mac model and each screen's top-edge geometry, to see where Notch would draw on a
+  Mac we can't test on, such as the MacBook Pro with Dynamic Island.
+- **Privacy policy** (PRIVACY.md): no data collected, no network.
+- **Store listing draft, account checklist and five screenshots** in `docs/app-store/`.
+- **The board's project filter** is a quiet text menu ("All projects ⌄") instead of a bordered pop-up.
+- Preview renders pin the clock, and `--store` renders an afternoon with a black camera housing.
+
 ## 0.3.1 (2026-11-19)
 
 - **Focus Guard says when a browser is blocked.** If macOS won't let Notch ask Chrome or Safari for

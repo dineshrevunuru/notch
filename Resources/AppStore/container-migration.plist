@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- On the store edition's first launch, macOS moves the direct-download edition's data into
+	     the sandbox container, so tasks, plans and settings carry over. -->
+	<key>Move</key>
+	<array>
+		<string>${ApplicationSupport}/Notch</string>
+		<string>${Library}/Preferences/com.dineshrevunuru.notch.plist</string>
+	</array>
+</dict>
+</plist>

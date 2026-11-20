@@ -49,7 +49,8 @@ final class DistractionMonitor {
         let category = app.bundleURL.flatMap { Bundle(url: $0)?.object(forInfoDictionaryKey: "LSApplicationCategoryType") as? String }
         let kinds = model.distractionSettings.kinds
 
-        guard let bundleID, let source = Browser.script(for: bundleID), !refused.contains(bundleID) else {
+        // The App Store edition is sandboxed and doesn't ask browsers for their tabs.
+        guard !Edition.isAppStore, let bundleID, let source = Browser.script(for: bundleID), !refused.contains(bundleID) else {
             let found = DistractionRules.classify(bundleID: bundleID, appName: name, appCategory: category, url: nil, kinds: kinds)
             guardLog.info("front app \(bundleID ?? "?", privacy: .public): \(found?.name ?? "not a distraction", privacy: .public)")
             model.observeDistraction(found)
@@ -87,6 +88,7 @@ final class DistractionMonitor {
     /// `notch://guard-check`: logs, for each running browser, whether Notch may ask it for its
     /// tab address, and what it gets when it does. Doesn't need the browser in front.
     func check() {
+        guard !Edition.isAppStore else { return }
         for bundleID in ["com.google.Chrome", "com.apple.Safari"] {
             guard let source = Browser.script(for: bundleID) else { continue }
             let permission = Browser.permission(for: bundleID)

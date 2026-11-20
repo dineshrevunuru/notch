@@ -261,6 +261,27 @@ Developer ID Application certificate, then build with `SIGN_IDENTITY="Developer 
 and notarize the zip with `xcrun notarytool`. The build already uses the hardened runtime and
 declares calendar access in `Resources/Notch.entitlements`, both of which notarization needs.
 
+## Mac App Store edition
+
+```bash
+scripts/build-app.sh --appstore              # sandboxed, universal; a signed .pkg once the certificates exist
+NOTCH_TEST=1 scripts/build-app.sh --appstore # a test copy under its own app ID, safe next to your real tasks
+build/NotchTest.app/Contents/MacOS/Notch --selftest   # checks storage, calendar and game detection in the sandbox, and prints each screen's shape
+```
+
+The store edition is the same app inside Apple's App Sandbox, with two differences:
+
+- **Focus Guard watches apps, not websites.** The sandbox doesn't let Notch ask browsers for their
+  tabs, so it catches games and video apps but not YouTube in a browser. The direct-download
+  edition keeps website detection.
+- **Tasks live in the app's container.** On first launch, macOS moves your existing tasks there
+  (`Resources/AppStore/container-migration.plist`).
+
+Store material is in `docs/app-store/`: the listing draft (`LISTING.md`), the account steps
+(`CHECKLIST.md`) and the screenshots, which are rebuilt with
+`.build/debug/Notch --render-previews <dir> --store` and `swift scripts/store-screenshots.swift <dir> docs/app-store/screenshots`.
+The privacy policy is [PRIVACY.md](PRIVACY.md): Notch collects no data.
+
 ## Links
 
 Shortcuts, Raycast, or your own scripts can drive it:

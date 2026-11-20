@@ -3,3 +3,5 @@ build/
 .swiftpm/
 dist/
 .DS_Store
+# Signing material for the App Store build; never public.
+*.provisionprofile

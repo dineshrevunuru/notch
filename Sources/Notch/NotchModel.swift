@@ -33,6 +33,9 @@ final class NotchModel {
     /// True while a text field in the open notch has focus; the notch stays open so typing isn't cut off.
     var isEditing = false
     private(set) var now = Date()
+    /// Pins the clock for preview renders, so a screenshot shows the same time on every run.
+    /// Nil, the real time, everywhere else.
+    static var fixedNow: Date?
     private(set) var currentAlert: NotchAlert?
     /// The task a focus session is about, if you picked one.
     private(set) var focusTaskID: UUID?
@@ -563,7 +566,7 @@ final class NotchModel {
     }
 
     private func tick() {
-        now = Date()
+        now = Self.fixedNow ?? Date()
         let roundInProgress: (start: Date, end: Date)? = {
             if case .running(.focus, _, let start, let end) = pomodoro.state { return (start, end) }
             return nil

@@ -22,13 +22,29 @@ struct BoardView: View {
                     .font(.system(size: 28, weight: .semibold))
                     .tracking(-0.5)
                 Spacer()
-                Picker("Project", selection: $project) {
-                    Text("All projects").tag(UUID?.none)
-                    if !store.projects.isEmpty { Divider() }
-                    ForEach(store.sortedProjects) { p in Text(p.name).tag(UUID?.some(p.id)) }
+                // A quiet text menu rather than a bordered pop-up: the header stays one title.
+                Menu {
+                    Picker("Project", selection: $project) {
+                        Text("All projects").tag(UUID?.none)
+                        if !store.projects.isEmpty { Divider() }
+                        ForEach(store.sortedProjects) { p in Text(p.name).tag(UUID?.some(p.id)) }
+                    }
+                    .pickerStyle(.inline)
+                    .labelsHidden()
+                } label: {
+                    HStack(spacing: 5) {
+                        Text(store.project(project)?.name ?? "All projects")
+                        Image(systemName: "chevron.down").font(.system(size: 11, weight: .semibold))
+                    }
+                    .font(.system(size: 15, weight: .medium))
+                    .foregroundStyle(.secondary)
+                    .contentShape(Rectangle())
                 }
-                .labelsHidden()
+                .menuStyle(.button)
+                .buttonStyle(.plain)
+                .menuIndicator(.hidden)
                 .fixedSize()
+                .accessibilityLabel("Project")
             }
             .padding(.horizontal, 32)
             .padding(.top, 28)
